@@ -29,6 +29,25 @@ public class InsertStatements  {
         }
     }
 
+    public void onProject(int id, int budget, int total_hours, String building_name, String country, String postal_code) {
+        try {
+            sql = "insert into project"
+                    + "(project_id, budget, total_hours, building_name, country, postal_code) values"
+                    + "(?,?,?,?,?,?)";
+            myStmt = connection.prepareStatement(sql);
+            myStmt.setInt(1, id);
+            myStmt.setInt(2, budget);
+            myStmt.setInt(3, total_hours);
+            myStmt.setString(4, building_name);
+            myStmt.setString(5, country);
+            myStmt.setString(6, postal_code);
+            myStmt.execute();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 
     public void onAddress() {
         sql = "insert into address"
@@ -46,12 +65,12 @@ public class InsertStatements  {
     }
 
 
-    public void onProject() {
-        sql = "insert into project"
-                + " (project_id, budget, total_hours, country, postal_code, building_name)"
-                + " values(1, 30, 60, 'Nederland', '3011 WN', 'Hogeschool Rotterdam')";
-        StatementExecuter.insert(sql);
-    }
+//    public void onProject() {
+//        sql = "insert into project"
+//                + " (project_id, budget, total_hours, country, postal_code, building_name)"
+//                + " values(1, 30, 60, 'Nederland', '3011 WN', 'Hogeschool Rotterdam')";
+//        StatementExecuter.insert(sql);
+//    }
 
 
     public void onPosition() {

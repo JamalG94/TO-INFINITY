@@ -14,7 +14,7 @@ public class Main extends Application {
 
     Stage window;
     Scene scene1;
-    SScene employeeScene;
+    SScene employeeScene, projectScene;
 
 
     @Override
@@ -24,10 +24,14 @@ public class Main extends Application {
         window = primaryStage;
         employeeScene = new EmployeeScene();
         employeeScene.setScene();
+        InsertStatements insertStatements = new InsertStatements();
+
+        projectScene = new ProjectScene();
+        projectScene.setScene();
 
         ChoiceBox<String> choiceBox = new ChoiceBox<>();
         choiceBox.getItems().addAll("Employees", "Projects");
-        choiceBox.setValue("Employees");
+        choiceBox.setValue("Projects");
 
         Button button = new Button();
         button.setText("Confirm choice");
@@ -50,6 +54,8 @@ public class Main extends Application {
             String choice = choiceBox.getValue();
         if(choice == "Employees"){
             window.setScene(employeeScene.scene);
+        } else if (choice == "Projects"){
+            window.setScene(projectScene.scene);
         }
     }
     public static void main(String[] args) {

@@ -12,9 +12,9 @@ public final class Connector {
     public static Connection connect() {
 
         try {
-            String url = "jdbc:postgresql://localhost:3307/databeest";
+            String url = "jdbc:postgresql://localhost:5433/Development_5";
             String user = "postgres";
-            String password = "test123";
+            String password = "********";
 
             Connection connection = DriverManager.getConnection(url, user, password);
 
