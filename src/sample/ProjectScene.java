@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 public class ProjectScene extends SScene {
 
     InsertStatements insertStatements = new InsertStatements();
+    DeleteStatements deleteStatements = new DeleteStatements();
 
     @Override
     public void setScene() {
@@ -20,8 +21,8 @@ public class ProjectScene extends SScene {
         layout = gridPane;
 
         addButton = new Button();
-        addButton.setText("Add an project");
-        deleteButton = new Button();
+        addButton.setText("Add a project");
+        deleteButton = new Button("Delete a project");
 
         Label label = new Label("Project ID");
         Label label1 = new Label("Budget");
@@ -54,11 +55,13 @@ public class ProjectScene extends SScene {
 
         addButton.setOnAction(event -> insertStatements.onProject(Integer.parseInt(projectIdInput.getText()),
                 Integer.parseInt(budget.getText()), Integer.parseInt(total_hours.getText()), building_nameInput.getText(), country_input.getText(), postal_codeInput.getText()));
+        deleteButton.setOnAction(event -> deleteStatements.onProject(Integer.parseInt(projectIdInput.getText()), country_input.getText(), postal_codeInput.getText(), building_nameInput.getText()));
+
 
         //deleteButton.setOnAction(event -> DeleteStatements);
         layout.getChildren().addAll(projectIdInput, budget, total_hours, building_nameInput,country_input, postal_codeInput,
                 label, label1, label2, label3, label4, label5,
-                addButton);
+                addButton, deleteButton);
         scene = new Scene(layout, 300, 300);
     }
 }
