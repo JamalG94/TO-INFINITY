@@ -7,7 +7,6 @@ import static sample.Connector.myStmt;
 
 public class InsertStatements extends Statements  {
 
-
     public void onEmployee(int bsn, String name, String surname, String building_name, String country, String postal_code) {
         try {
             sql = "insert into employee"

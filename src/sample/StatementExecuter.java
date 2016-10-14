@@ -8,10 +8,7 @@ public class StatementExecuter {
 
     public static void insert(String sql) {
         try {
-
-
             System.out.println("Statement executed");
-
 
         } catch (Exception ex) {
             System.out.println(ex);

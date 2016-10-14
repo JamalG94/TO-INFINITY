@@ -11,6 +11,7 @@ public class EmployeeScene extends SScene {
 
     InsertStatements insertStatements = new InsertStatements();
     DeleteStatements deleteStatements = new DeleteStatements();
+    UpdateStatements updateStatements = new UpdateStatements();
 
     @Override
     public void setScene() {
@@ -52,16 +53,17 @@ public class EmployeeScene extends SScene {
         gridPane.setConstraints(label5, 0, 6);
         gridPane.setConstraints(addButton, 0, 7);
         gridPane.setConstraints(deleteButton, 0, 8);
-
+        gridPane.setConstraints(modifyButton, 0, 9);
 
         addButton.setOnAction(event -> insertStatements.onEmployee(Integer.parseInt(bsnInput.getText()),
                 nameInput.getText(), surnameInput.getText(), building_nameInput.getText(), country_input.getText(), postal_codeInput.getText()));
         deleteButton.setOnAction(event -> deleteStatements.onEmployee(Integer.parseInt(bsnInput.getText())));
+        modifyButton.setOnAction(event -> updateStatements.onEmployee(Integer.parseInt(bsnInput.getText()), nameInput.getText()));
 
         layout.getChildren().addAll(
                 bsnInput, nameInput, surnameInput, building_nameInput,country_input, postal_codeInput,
                 label, label1, label2, label3, label4, label5,
-                addButton, deleteButton);
+                addButton, deleteButton, modifyButton);
         scene = new Scene(layout, 300, 300);
     }
 }
