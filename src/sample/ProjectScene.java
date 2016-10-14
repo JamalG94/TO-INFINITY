@@ -11,9 +11,12 @@ import javafx.scene.layout.HBox;
  * Created by stefan on 13-Oct-16.
  */
 public class ProjectScene extends SScene {
+    Button checkRentButton;
+    String rentCheck = "";
 
     InsertStatements insertStatements = new InsertStatements();
     DeleteStatements deleteStatements = new DeleteStatements();
+    RandomStatements randomStatements = new RandomStatements();
 
     @Override
     public void setScene() {
@@ -23,6 +26,7 @@ public class ProjectScene extends SScene {
         addButton = new Button();
         addButton.setText("Add a project");
         deleteButton = new Button("Delete a project");
+        checkRentButton = new Button("Check what project cannot pay the rent");
 
         Label label = new Label("Project ID");
         Label label1 = new Label("Budget");
@@ -30,6 +34,8 @@ public class ProjectScene extends SScene {
         Label label3 = new Label("Building name");
         Label label4 = new Label("Country");
         Label label5 = new Label("Postal Code");
+
+        Label label6 = new Label(rentCheck);
 
         TextField projectIdInput = new TextField();
         TextField budget = new TextField();
@@ -50,6 +56,7 @@ public class ProjectScene extends SScene {
         gridPane.setConstraints(label3, 0, 4);
         gridPane.setConstraints(label4, 0, 5);
         gridPane.setConstraints(label5, 0, 6);
+        gridPane.setConstraints(label6, 0, 9);
         gridPane.setConstraints(addButton, 0, 7);
         gridPane.setConstraints(deleteButton, 0, 8);
 
@@ -57,11 +64,13 @@ public class ProjectScene extends SScene {
                 Integer.parseInt(budget.getText()), Integer.parseInt(total_hours.getText()), building_nameInput.getText(), country_input.getText(), postal_codeInput.getText()));
         deleteButton.setOnAction(event -> deleteStatements.onProject(Integer.parseInt(projectIdInput.getText()), country_input.getText(), postal_codeInput.getText(), building_nameInput.getText()));
 
+        checkRentButton.setOnAction(event -> randomStatements.onCheckProjectRent());
+
 
         //deleteButton.setOnAction(event -> DeleteStatements);
         layout.getChildren().addAll(projectIdInput, budget, total_hours, building_nameInput,country_input, postal_codeInput,
                 label, label1, label2, label3, label4, label5,
-                addButton, deleteButton);
+                addButton, deleteButton, checkRentButton);
         scene = new Scene(layout, 300, 300);
     }
 }
