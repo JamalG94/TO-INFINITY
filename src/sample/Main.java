@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -24,7 +23,6 @@ public class Main extends Application {
         window = primaryStage;
         employeeScene = new EmployeeScene();
         employeeScene.setScene();
-        InsertStatements insertStatements = new InsertStatements();
 
         projectScene = new ProjectScene();
         projectScene.setScene();

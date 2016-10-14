@@ -1,6 +1,6 @@
 package sample;
 
-import java.sql.Connection;
+
 
 import static sample.Connector.myStmt;
 
