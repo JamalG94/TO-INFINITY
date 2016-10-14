@@ -9,6 +9,7 @@ public final class Connector {
 
     static PreparedStatement myStmt;
 
+
     public static Connection connect() {
 
         try {
@@ -26,5 +27,4 @@ public final class Connector {
         }
         return null;
     }
-
 }

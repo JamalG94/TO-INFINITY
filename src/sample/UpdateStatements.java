@@ -21,6 +21,21 @@ public class UpdateStatements extends Statements{
             System.out.println(e);
         }
     }
+
+    public void onProject(int id, int budget) {
+        try {
+            sql = "update project"
+                    + " set budget = (?)"
+                    + " where project_id = (?)";
+            myStmt = connection.prepareStatement(sql);
+            myStmt.setInt(1, budget);
+            myStmt.setInt(2, id);
+            myStmt.execute();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }
 
 

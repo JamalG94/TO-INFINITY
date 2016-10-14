@@ -16,6 +16,7 @@ public class ProjectScene extends SScene {
 
     InsertStatements insertStatements = new InsertStatements();
     DeleteStatements deleteStatements = new DeleteStatements();
+    UpdateStatements updateStatements = new UpdateStatements();
     RandomStatements randomStatements = new RandomStatements();
 
     @Override
@@ -27,6 +28,7 @@ public class ProjectScene extends SScene {
         addButton.setText("Add a project");
         deleteButton = new Button("Delete a project");
         checkRentButton = new Button("Check what project cannot pay the rent");
+        modifyButton = new Button("Update a project");
 
         Label label = new Label("Project ID");
         Label label1 = new Label("Budget");
@@ -59,10 +61,12 @@ public class ProjectScene extends SScene {
         gridPane.setConstraints(label6, 0, 9);
         gridPane.setConstraints(addButton, 0, 7);
         gridPane.setConstraints(deleteButton, 0, 8);
+        gridPane.setConstraints(modifyButton, 0, 9);
 
         addButton.setOnAction(event -> insertStatements.onProject(Integer.parseInt(projectIdInput.getText()),
                 Integer.parseInt(budget.getText()), Integer.parseInt(total_hours.getText()), building_nameInput.getText(), country_input.getText(), postal_codeInput.getText()));
         deleteButton.setOnAction(event -> deleteStatements.onProject(Integer.parseInt(projectIdInput.getText()), country_input.getText(), postal_codeInput.getText(), building_nameInput.getText()));
+        modifyButton.setOnAction(event -> updateStatements.onProject(Integer.parseInt(projectIdInput.getText()), Integer.parseInt(budget.getText())));
 
         checkRentButton.setOnAction(event -> randomStatements.onCheckProjectRent());
 
@@ -70,7 +74,7 @@ public class ProjectScene extends SScene {
         //deleteButton.setOnAction(event -> DeleteStatements);
         layout.getChildren().addAll(projectIdInput, budget, total_hours, building_nameInput,country_input, postal_codeInput,
                 label, label1, label2, label3, label4, label5,
-                addButton, deleteButton, checkRentButton);
+                addButton, deleteButton, modifyButton, checkRentButton);
         scene = new Scene(layout, 300, 300);
     }
 }
