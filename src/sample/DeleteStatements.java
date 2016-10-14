@@ -37,4 +37,19 @@ public class DeleteStatements extends Statements {
             System.out.println(e);
         }
     }
+
+    public void onEmployeePosition(int bsn, int project_id, int position_id) {
+        try {
+            sql = "delete from employee_postion"
+                    + " where bsn = (?) and project_id = (?) and position_id = (?)";
+            myStmt = connection.prepareStatement(sql);
+            myStmt.setInt(1, bsn);
+            myStmt.setInt(2, project_id);
+            myStmt.setInt(3, position_id);
+            myStmt.execute();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }

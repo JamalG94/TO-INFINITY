@@ -14,7 +14,7 @@ public class Main extends Application {
 
     Stage window;
     Scene scene1;
-    SScene employeeScene, projectScene;
+    SScene employeeScene, projectScene, employeePositionScene;
 
 
     @Override
@@ -29,8 +29,11 @@ public class Main extends Application {
         projectScene = new ProjectScene();
         projectScene.setScene();
 
+        employeePositionScene = new EmployeePositionScene();
+        employeePositionScene.setScene();
+
         ChoiceBox<String> choiceBox = new ChoiceBox<>();
-        choiceBox.getItems().addAll("Employees", "Projects");
+        choiceBox.getItems().addAll("Employees", "Projects", "Employee to Project");
         choiceBox.setValue("Projects");
 
         Button button = new Button();
@@ -56,6 +59,8 @@ public class Main extends Application {
             window.setScene(employeeScene.scene);
         } else if (choice == "Projects"){
             window.setScene(projectScene.scene);
+        } else if (choice == "Employee to Project"){
+            window.setScene(employeePositionScene.scene);
         }
     }
     public static void main(String[] args) {

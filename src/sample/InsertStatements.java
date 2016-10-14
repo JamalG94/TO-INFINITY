@@ -44,4 +44,20 @@ public class InsertStatements extends Statements  {
             System.out.println(e);
         }
     }
+
+    public void onEmployeePosition(int bsn, int project_id, int position_id) {
+        try {
+            sql = "insert into employee_postion"
+                    + "(bsn, project_id, position_id) values"
+                    + "(?,?,?)";
+            myStmt = connection.prepareStatement(sql);
+            myStmt.setInt(1, bsn);
+            myStmt.setInt(2, project_id);
+            myStmt.setInt(3, position_id);
+            myStmt.execute();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }
