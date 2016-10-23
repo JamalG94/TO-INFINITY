@@ -12,7 +12,8 @@ import static sample.Connector.myStmt;
  */
 public class RandomStatements extends Statements {
     List <String> projectids;
-    public void onCheckProjectRent() {
+    public String onCheckProjectRent() {
+        String result = "";
         ResultSet rs;
         Statement stmt;
         projectids = new ArrayList<String>();
@@ -34,7 +35,8 @@ public class RandomStatements extends Statements {
             System.out.println(e);
         }
         for (String x: projectids) {
-            System.out.println(x);
+            result = result + " " + x;
         }
+        return result;
     }
 }
